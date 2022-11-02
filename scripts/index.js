@@ -3,7 +3,7 @@
 window.onload = function () {
     initTeamsDropdown();
     const Btn = document.getElementById("Btn");
-    Btn.onclick = displayInfo();
+    Btn.onclick = displayInfo;
 }
 
 function initTeamsDropdown() {
@@ -45,5 +45,33 @@ function initTeamsDropdown() {
         // append the option as a child of (inside) the
         // select element   
         teamsList.appendChild(theOption);
+    }
+}
+
+function displayInfo () {
+    let teams = [
+        {code:"DAL", name:"Dallas Cowboys", plays:"Arlington, TX"},
+        {code:"DEN", name:"Denver Broncos", plays:"Denver, CO"},
+        {code:"HOU", name:"Houston Texans", plays:"Houston, TX"},
+        {code:"KAN", name:"Kansas City Chiefs", plays:"Kansas City, MO"},
+    ];
+
+    let codes = [];
+    let names = [];
+    let locations = [];
+
+    for (let value of teams) {
+        codes.push(value.code)
+        names.push(value.name)
+        locations.push(value.plays)
+    }
+
+    const teamsList = document.getElementById("teamsList");
+    let selectedValue = teamsList.value;
+    let length = teams.length;
+    for (let i = 0; i < length; i++) {
+        if (selectedValue == codes[i]) {
+            document.getElementById("teamInfo").innerHTML = "You selected the " + names[i] + " (" + codes[i] + ") who play in " + locations[i];
+        }
     }
 }
