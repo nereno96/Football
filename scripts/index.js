@@ -1,5 +1,28 @@
 "use strict"
 
+let teams = [
+    {code:"DAL", name:"Dallas Cowboys", plays:"Arlington, TX"},
+    {code:"DEN", name:"Denver Broncos", plays:"Denver, CO"},
+    {code:"HOU", name:"Houston Texans", plays:"Houston, TX"},
+    {code:"KAN", name:"Kansas City Chiefs", plays:"Kansas City, MO"},
+];
+
+// created arrays to separate attributes of objects in teams array
+let codes = [];
+let names = [];
+let locations = [];
+
+// used for-of loop to push each attribute to the arrays created above
+for (let value of teams) {
+    codes.push(value.code)
+    names.push(value.name)
+    locations.push(value.plays)
+}
+
+const teamsList = document.getElementById("teamsList");
+
+let length = teams.length;
+
 window.onload = function () {
     initTeamsDropdown();
     const Btn = document.getElementById("Btn");
@@ -7,28 +30,7 @@ window.onload = function () {
 }
 
 function initTeamsDropdown() {
-    let teams = [
-        {code:"DAL", name:"Dallas Cowboys", plays:"Arlington, TX"},
-        {code:"DEN", name:"Denver Broncos", plays:"Denver, CO"},
-        {code:"HOU", name:"Houston Texans", plays:"Houston, TX"},
-        {code:"KAN", name:"Kansas City Chiefs", plays:"Kansas City, MO"},
-    ];
 
-    // created arrays to separate attributes of objects in teams array
-    let codes = [];
-    let names = [];
-    let locations = [];
-
-    // used for-of loop to push each attribute to the arrays created above
-    for (let value of teams) {
-        codes.push(value.code)
-        names.push(value.name)
-        locations.push(value.plays)
-    }
-
-    const teamsList = document.getElementById("teamsList");
-
-    let length = teams.length;
     for (let i = 0; i < length; i++) {
 
         // create the option element
@@ -49,29 +51,11 @@ function initTeamsDropdown() {
 }
 
 function displayInfo () {
-    let teams = [
-        {code:"DAL", name:"Dallas Cowboys", plays:"Arlington, TX"},
-        {code:"DEN", name:"Denver Broncos", plays:"Denver, CO"},
-        {code:"HOU", name:"Houston Texans", plays:"Houston, TX"},
-        {code:"KAN", name:"Kansas City Chiefs", plays:"Kansas City, MO"},
-    ];
-
-    let codes = [];
-    let names = [];
-    let locations = [];
-
-    for (let value of teams) {
-        codes.push(value.code)
-        names.push(value.name)
-        locations.push(value.plays)
-    }
-
-    const teamsList = document.getElementById("teamsList");
     let selectedValue = teamsList.value;
-    let length = teams.length;
     for (let i = 0; i < length; i++) {
         if (selectedValue == codes[i]) {
             document.getElementById("teamInfo").innerHTML = "You selected the " + names[i] + " (" + codes[i] + ") who play in " + locations[i];
         }
     }
+    return false;
 }
