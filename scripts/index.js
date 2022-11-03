@@ -23,6 +23,11 @@ const teamsList = document.getElementById("teamsList");
 
 let length = teams.length;
 
+let theOption= document.createElement("option");
+theOption.textContent = "Select a team"
+theOption.value = "";
+teamsList.appendChild(theOption);
+
 window.onload = function () {
     initTeamsDropdown();
     const Btn = document.getElementById("Btn");
@@ -56,6 +61,10 @@ function displayInfo () {
         if (selectedValue == codes[i]) {
             document.getElementById("teamInfo").innerHTML = "You selected the " + names[i] + " (" + codes[i] + ") who play in " + locations[i];
         }
+        else if (selectedValue == ""){
+            document.getElementById("teamInfo").innerHTML = "";
+        }
+        
     }
     return false;
 }
